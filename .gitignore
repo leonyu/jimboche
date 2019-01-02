@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/linux,node,grunt,vim
-# Edit at https://www.gitignore.io/?templates=linux,node,grunt,vim
+# Created by https://www.gitignore.io/api/grunt,linux,node,osx,vim
+# Edit at https://www.gitignore.io/?templates=grunt,linux,node,osx,vim
 
 ### grunt ###
 # Grunt usually compiles files inside this directory
@@ -106,6 +106,34 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+### OSX ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
@@ -124,4 +152,4 @@ tags
 # Persistent undo
 [._]*.un~
 
-# End of https://www.gitignore.io/api/linux,node,grunt,vim
+# End of https://www.gitignore.io/api/grunt,linux,node,osx,vim

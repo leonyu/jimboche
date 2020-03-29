@@ -1,8 +1,8 @@
 #!/bin/sh
 
-yarn
+yarn install
 yarn clean
 yarn lint
 yarn build
-rm -fr ./doc
-mv ./dist ./doc
+rm -fr ./docs/
+mv ./dist ./docs/

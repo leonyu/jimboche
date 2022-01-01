@@ -6,7 +6,7 @@
   "private": true,
   "repository": "git@bitbucket.org:voidvector/www.jimboche.com.git",
   "devDependencies": {
-    "cspell": "^5.13.1",
+    "cspell": "^5.14.0",
     "html-minifier": "^4.0.0",
     "rimraf": "^3.0.2"
   },

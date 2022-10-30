@@ -1,8 +1,8 @@
 #!/bin/sh
 
-yarn install
-yarn clean
-yarn lint
-yarn build
+npm install
+npm run clean
+npm run lint
+npm run build
 rm -fr ./docs/
 mv ./dist ./docs/

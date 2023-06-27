@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
-          cache: 'npm'
+          cache: "npm"
 
       - name: npm install, lint, build, and test
         run: |
@@ -37,7 +37,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './dist'
+          path: "./dist"
 
   deploy:
     needs: build

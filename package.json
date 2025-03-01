@@ -5,7 +5,7 @@
   "description": "www.jimboche.com",
   "private": true,
   "devDependencies": {
-    "cspell": "^8.17.3",
+    "cspell": "^8.17.5",
     "html-minifier-terser": "^7.2.0"
   },
   "scripts": {

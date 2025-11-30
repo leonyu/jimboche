@@ -5,11 +5,11 @@
   "description": "www.jimboche.com",
   "private": true,
   "devDependencies": {
-    "cspell": "^9.2.1",
-    "html-minifier-terser": "^7.2.0"
+    "cspell": "^9.3.2",
+    "html-minifier-next": "4.6.0"
   },
   "scripts": {
     "lint": "cspell 'src/**/*.ts' 'public/**/*'",
-    "build": "html-minifier-terser --input-dir public/ -c html-minifier.conf --output-dir dist/ && cp -R assets dist"
+    "build": "html-minifier-next --input-dir public/ -c html-minifier.conf --output-dir dist/ && cp -R assets dist"
   }
 }

@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "cspell": "^9.3.2",
-    "html-minifier-next": "4.6.0"
+    "html-minifier-next": "4.16.4"
   },
   "scripts": {
     "lint": "cspell 'src/**/*.ts' 'public/**/*'",

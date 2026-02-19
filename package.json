@@ -5,8 +5,8 @@
   "description": "www.jimboche.com",
   "private": true,
   "devDependencies": {
-    "cspell": "^9.3.2",
-    "html-minifier-next": "4.6.0"
+    "cspell": "^9.6.4",
+    "html-minifier-next": "5.1.1"
   },
   "scripts": {
     "lint": "cspell 'src/**/*.ts' 'public/**/*'",

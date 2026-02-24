@@ -4,7 +4,7 @@ import path from 'node:path';
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
 import puppeteer, { Browser } from 'puppeteer-core';
 
-const VIEWPORTS = {
+const VIEWPORT_SIZES = {
   'desktop': { width: 1920, height: 1080 },
   'mobile': { width: 360, height: 800 },
 };
@@ -26,14 +26,14 @@ describe('Screenshot test', () => {
     await browser.close();
   });
 
-  it.each<{ viewport: keyof typeof VIEWPORTS }>([
+  it.each<{ viewport: keyof typeof VIEWPORT_SIZES }>([
     { viewport: 'desktop' },
     { viewport: 'mobile' },
   ])('matches $viewport image snapshot', async ({ viewport }) => {
     const page = await browser.newPage();
     const absPath = path.join(__dirname, '../dist/index.html');
     await page.goto(`file://${absPath}`);
-    await page.setViewport(VIEWPORTS[viewport]);
+    await page.setViewport(VIEWPORT_SIZES[viewport]);
     await page.waitForNetworkIdle();
     const image = await page.screenshot();
     expect(image).toMatchImageSnapshot({

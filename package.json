@@ -15,7 +15,7 @@
     "ts-jest": "^29.4.6"
   },
   "scripts": {
-    "lint": "cspell 'src/**/*.ts' 'public/**/*'",
+    "lint": "cspell 'src/**/*.ts' 'test/**/*.ts' 'public/**/*'",
     "build": "html-minifier-terser --input-dir public/ -c html-minifier.conf --output-dir dist/ && cp -R assets dist",
     "test": "jest --runInBand"
   }

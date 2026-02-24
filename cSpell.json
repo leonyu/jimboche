@@ -3,10 +3,9 @@
   "language": "en",
   "words": [
     "chepte",
-    "perungo",
     "jimboche",
-    "crossorigin",
-    "webm"
+    "perungo",
+    "ssim"
   ],
   "ignorePaths": ["node_modules/**"],
   "flagWords": []

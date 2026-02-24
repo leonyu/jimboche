@@ -1,0 +1,9 @@
+FROM docker.io/library/alpine:3.23 AS builder
+RUN apk add --no-cache nodejs npm chromium
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV CHROME_BIN /usr/bin/chromium-browser
+COPY . /build
+WORKDIR /build
+RUN npm ci && npm run lint && npm run build && npm test -- --ci --coverage
+RUN npm ci --omit=dev
+RUN mkdir /stage && cp -r /build/dist /build/node_modules /build/package.json /stage

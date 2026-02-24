@@ -3,3 +3,4 @@
 npm install
 npm run lint
 npm run build
+npm test

@@ -12,8 +12,10 @@ describe('Screenshot test index.html', () => {
   beforeEach(async () => {
     browser = await puppeteer.launch(process.env['CHROME_BIN'] ? {
       executablePath: process.env['CHROME_BIN'],
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    } : {});
+      args: ['--autoplay-policy=user-gesture-required', '--no-sandbox', '--disable-setuid-sandbox']
+    } : {
+      args: ['--autoplay-policy=user-gesture-required']
+    });
   });
 
   it('should match desktop image snapshot', async () => {

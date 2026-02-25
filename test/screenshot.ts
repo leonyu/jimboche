@@ -14,7 +14,9 @@ describe('Screenshot test', () => {
   beforeAll(async () => {
     expect.extend({ toMatchImageSnapshot });
 
-    const args = ['--no-sandbox', '--disable-setuid-sandbox', '--autoplay-policy=user-gesture-required'];
+    const args = process.getuid?.() == 0 ?
+      ['--autoplay-policy=user-gesture-required', '--no-sandbox'] :
+      ['--autoplay-policy=user-gesture-required'];
     browser = await puppeteer.launch(process.env['CHROME_BIN'] ?
       { executablePath: process.env['CHROME_BIN'], args } :
       { channel: 'chrome', args });

@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
@@ -13,14 +12,13 @@ describe('Screenshot test', () => {
   let browser: Browser;
 
   beforeAll(async () => {
-    const chromeBin = await locateBinary(CHROME_BIN_PATHS);
-    browser = await puppeteer.launch({
-      executablePath: chromeBin,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--autoplay-policy=user-gesture-required']
-    });
-
     expect.extend({ toMatchImageSnapshot });
-  });
+
+    const args = ['--no-sandbox', '--disable-setuid-sandbox', '--autoplay-policy=user-gesture-required'];
+    browser = await puppeteer.launch(process.env['CHROME_BIN'] ?
+      { executablePath: process.env['CHROME_BIN'], args } :
+      { channel: 'chrome', args });
+  }, 30_000);
 
   afterAll(async () => {
     await browser.close();
@@ -43,17 +41,3 @@ describe('Screenshot test', () => {
     });
   });
 });
-
-const CHROME_BIN_PATHS = [
-  '/usr/bin/chromium-browser',
-  '/usr/bin/google-chrome',
-];
-
-async function locateBinary(binPaths: string[]): Promise<string> {
-  for (const binPath of binPaths) {
-    if (await fs.access(binPath, fs.constants.X_OK).then(() => true).catch(() => false)) {
-      return binPath;
-    }
-  }
-  throw new Error(`Binary not found: ${binPaths.join(', ')}`);
-}

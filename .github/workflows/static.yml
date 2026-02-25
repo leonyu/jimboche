@@ -21,18 +21,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
           cache: "npm"
 
-      - name: npm install, lint, build, and test
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+
+      - name: npm install, lint, and test
         run: |
           npm ci
-          npm run lint --if-present
           npm run build --if-present
           npm run test --if-present
+          npm run lint --if-present
+        env:
+          CHROME_BIN: ${{ steps.setup_chrome.outputs.chrome-path }}
+
+      - name: npm build
+        env:
+          NODE_ENV: production
+        run: |
+          rm -rf ./dist
+          npm run build --if-present
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

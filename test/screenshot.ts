@@ -4,8 +4,8 @@ import { toMatchImageSnapshot } from 'jest-image-snapshot';
 import puppeteer, { Browser } from 'puppeteer-core';
 
 const VIEWPORT_SIZES = {
-  'desktop': { width: 1920, height: 1080 },
-  'mobile': { width: 360, height: 800 },
+  desktop: { width: 1920, height: 1080 },
+  mobile: { width: 360, height: 800 },
 };
 
 describe('Screenshot test', () => {
@@ -14,12 +14,15 @@ describe('Screenshot test', () => {
   beforeAll(async () => {
     expect.extend({ toMatchImageSnapshot });
 
-    const args = process.getuid?.() == 0 ?
-      ['--autoplay-policy=user-gesture-required', '--no-sandbox'] :
-      ['--autoplay-policy=user-gesture-required'];
-    browser = await puppeteer.launch(process.env['CHROME_BIN'] ?
-      { executablePath: process.env['CHROME_BIN'], args } :
-      { channel: 'chrome', args });
+    const args =
+      process.getuid?.() == 0
+        ? ['--autoplay-policy=user-gesture-required', '--no-sandbox']
+        : ['--autoplay-policy=user-gesture-required'];
+    browser = await puppeteer.launch(
+      process.env['CHROME_BIN']
+        ? { executablePath: process.env['CHROME_BIN'], args }
+        : { channel: 'chrome', args },
+    );
   }, 30_000);
 
   afterAll(async () => {

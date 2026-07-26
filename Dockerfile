@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.23 AS builder
+FROM docker.io/library/alpine:3.24 AS builder
 RUN apk add --no-cache nodejs npm chromium
 ENV CHROME_BIN '/usr/bin/chromium-browser'
 COPY . /build
